@@ -21,9 +21,10 @@ public class DateTimeFunctions {
 	 * Implement the method so that it returns today's date.
 	 */
 	public static LocalDate getTodaysDate() {
-		//YOUR CODE STARTS HERE
-		return null;
-		//YOUR CODE ENDS HERE
+
+        //uses inbuilt method from LocalDate lib
+		return LocalDate.now();
+
 
 	}
 
@@ -32,9 +33,21 @@ public class DateTimeFunctions {
 	 * the input date.
 	 */
 	public static LocalDate getLaterDatebyDays(LocalDate date, int x) {
-		//YOUR CODE STARTS HERE
-		return null;
-		//YOUR CODE ENDS HERE
+
+        //making sure date and the number of days are valid
+        if(date == null){
+            throw new IllegalArgumentException("date cannot be null");
+        }
+
+        if (x < 0) {
+            throw new IllegalArgumentException("x cannot be negative");
+        }
+
+        //uses inbuilt method from LocalDate lib
+        return date.plusDays(x);
+
+
+
 
 	}
 
@@ -43,9 +56,18 @@ public class DateTimeFunctions {
 	 * the input date.
 	 */
 	public static LocalDate getPreviousDatebyWeeks(LocalDate date, int x) {
-		//YOUR CODE STARTS HERE
-		return null;
-		//YOUR CODE ENDS HERE
+
+        //making sure date and the number of weeks are valid
+		if(date == null){
+            throw new IllegalArgumentException("date cannot be null");
+        }
+
+        if (x < 0) {
+            throw new IllegalArgumentException("x cannot be negative");
+        }
+
+        //uses inbuilt method from LocalDate lib
+        return date.minusWeeks(x);
 
 	}
 
@@ -55,9 +77,23 @@ public class DateTimeFunctions {
 	 * Return the String in the format: "Year-20:Months-5:Days-1"
 	 */
 	public static String getTimeDifference(LocalDate date1, LocalDate date2) {
-		//YOUR CODE STARTS HERE
-		return null;
-		//YOUR CODE ENDS HERE
+
+        //making sure both the dates are not null
+		if(date1 == null || date2 == null){
+            throw new IllegalArgumentException("Input dates cannot be null");
+
+        }
+
+        Period p =  Period.between(date1, date2);
+
+        //uses inbuilt method from period lib
+        int years =  p.getYears();
+        int months =  p.getMonths();
+        int days =  p.getDays();
+
+        String difference = "Years-"+years+":Months-"+months+":Days-"+days;
+        return difference;
+
 
 	}
 
